@@ -10,6 +10,7 @@ function Auth() {
                 </div>
                 <h2 className="font-semibold text-lg">AI Interview</h2>
             </div>
+            
         </div>
     </div>
   )
