@@ -14,8 +14,6 @@ function NavBar() {
 
   return (
     <div className="bg-white/80 backdrop-blur-md shadow-lg px-6 py-3 flex items-center justify-between m-5 rounded-2xl border border-gray-200">
-      
-      {/* LEFT */}
       <div className="flex items-center gap-3">
         <div className="bg-gradient-to-br from-black to-gray-700 text-white p-2 rounded-xl shadow">
           <BsRobot size={18} />
@@ -25,10 +23,7 @@ function NavBar() {
         </h1>
       </div>
 
-      {/* RIGHT */}
       <div className="flex items-center gap-4 relative">
-
-        {/* CREDIT BUTTON */}
         <div className="relative">
           <button
             onClick={() => {
@@ -41,7 +36,6 @@ function NavBar() {
             <span>{userData?.credits || 0}</span>
           </button>
 
-          {/* CREDIT POPUP */}
           {showCreditPopup && (
             <div className="absolute right-0 mt-3 w-52 bg-white/90 backdrop-blur-lg border border-gray-200 shadow-xl rounded-xl p-4 text-sm z-50 animate-fadeIn">
               <p className="font-semibold text-gray-800">Your Credits</p>
@@ -59,7 +53,6 @@ function NavBar() {
           )}
         </div>
 
-        {/* USER BUTTON */}
         <div className="relative">
           <button
             onClick={() => {
@@ -73,11 +66,8 @@ function NavBar() {
               : <FaUser />}
           </button>
 
-          {/* USER POPUP */}
           {showUserPopup && (
             <div className="absolute right-0 mt-3 w-56 bg-white/90 backdrop-blur-lg border border-gray-200 shadow-xl rounded-xl p-4 text-sm z-50 animate-fadeIn">
-              
-              {/* USER INFO */}
               <div className="mb-3">
                 <p className="font-semibold text-gray-800">
                   {userData?.name || "User"}
@@ -87,9 +77,7 @@ function NavBar() {
                 </p>
               </div>
 
-              {/* OPTIONS */}
               <div className="border-t pt-3 flex flex-col gap-2">
-
                 <button
                   onClick={() => navigate("/history")}
                   className="flex items-center gap-2 hover:bg-gray-100 px-3 py-2 rounded-lg transition"
