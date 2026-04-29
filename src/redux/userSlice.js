@@ -4,7 +4,9 @@ const userSlice = createSlice({
     name: "user",
     initialState: {
         userData : null,
-        returnTo: null
+        returnTo: null,
+        isAuthLoading: true,
+        sessionExpired: false
     },
     reducers: {
         setUserData: (state, action) => {
@@ -15,10 +17,16 @@ const userSlice = createSlice({
         },
         clearReturnTo: (state) => {
             state.returnTo = null
+        },
+        setAuthLoading: (state, action) => {
+            state.isAuthLoading = action.payload
+        },
+        setSessionExpired: (state, action) => {
+            state.sessionExpired = action.payload
         }
     }
 })
 
-export const {setUserData, setReturnTo, clearReturnTo} = userSlice.actions
+export const {setUserData, setReturnTo, clearReturnTo, setAuthLoading, setSessionExpired} = userSlice.actions
 
 export default userSlice.reducer

@@ -1,12 +1,12 @@
 import { BsRobot } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../utils/Firebase";
 import { ServerUrl } from "../App";
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
-import { setUserData, clearReturnTo } from "../redux/userSlice";
+import { setUserData, clearReturnTo, setSessionExpired } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 
 // Email validation utility
@@ -31,6 +31,14 @@ function Auth() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const returnTo = useSelector((state) => state.user.returnTo)
+  const sessionExpired = useSelector((state) => state.user.sessionExpired)
+
+  // Clear session expired flag when user lands on auth page
+  useEffect(() => {
+    if (sessionExpired) {
+      dispatch(setSessionExpired(false))
+    }
+  }, [sessionExpired, dispatch])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
